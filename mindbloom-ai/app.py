@@ -19,4 +19,4 @@ with c2:
 with c3:
     st.subheader("📚 Learn")
     st.write("Upload trusted books and documents for RAG.")
-st.info("Start with Chat in the sidebar. Add GROQ_API_KEY to Streamlit secrets before using AI features.")
+
