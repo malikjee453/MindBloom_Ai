@@ -6,40 +6,24 @@ from core.ui import render_header
 
 
 # ---------------------------------------------------------
-# Jameel Noori Nastaleeq Urdu Font
+# Urdu font styling
 # ---------------------------------------------------------
 
 st.markdown(
     """
     <style>
 
-    @font-face {
-        font-family: 'JameelNooriNastaleeq';
-        src: url('/app/static/assets/fonts/JameelNooriNastaleeq.ttf')
-             format('truetype');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-    }
-
     .urdu-response {
-        font-family: 'JameelNooriNastaleeq',
-                     'Jameel Noori Nastaleeq',
-                     serif !important;
-
+        font-family: "JameelNooriNastaleeq" !important;
         direction: rtl !important;
         text-align: right !important;
-
         font-size: 24px !important;
         line-height: 2.2 !important;
-
         unicode-bidi: plaintext !important;
     }
 
     .urdu-response * {
-        font-family: 'JameelNooriNastaleeq',
-                     'Jameel Noori Nastaleeq',
-                     serif !important;
+        font-family: "JameelNooriNastaleeq" !important;
     }
 
     </style>
@@ -61,7 +45,7 @@ def contains_urdu(text):
 
 
 # ---------------------------------------------------------
-# Initialize
+# Initialize app
 # ---------------------------------------------------------
 
 init_session()
@@ -87,18 +71,11 @@ for message in st.session_state.messages:
             message["role"] == "assistant"
             and contains_urdu(content)
         ):
-
             st.markdown(
-                f"""
-                <div class="urdu-response">
-                    {content}
-                </div>
-                """,
+                f'<div class="urdu-response">{content}</div>',
                 unsafe_allow_html=True,
             )
-
         else:
-
             st.markdown(content)
 
 
@@ -111,7 +88,6 @@ prompt = st.chat_input("What's on your mind?")
 
 if prompt:
 
-    # User message
     st.session_state.messages.append(
         {
             "role": "user",
@@ -131,7 +107,6 @@ if prompt:
         try:
 
             with st.spinner("Thinking..."):
-
                 answer, sources, route = respond(prompt)
 
         except Exception as e:
@@ -150,11 +125,7 @@ if prompt:
         if contains_urdu(answer):
 
             st.markdown(
-                f"""
-                <div class="urdu-response">
-                    {answer}
-                </div>
-                """,
+                f'<div class="urdu-response">{answer}</div>',
                 unsafe_allow_html=True,
             )
 
@@ -163,7 +134,7 @@ if prompt:
             st.markdown(answer)
 
         # -------------------------------------------------
-        # Knowledge sources
+        # RAG sources
         # -------------------------------------------------
 
         if sources:
@@ -178,7 +149,10 @@ if prompt:
                         f"(similarity {source['score']})"
                     )
 
-    # Save assistant response
+    # -----------------------------------------------------
+    # Save response
+    # -----------------------------------------------------
+
     st.session_state.messages.append(
         {
             "role": "assistant",
