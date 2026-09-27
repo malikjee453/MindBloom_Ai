@@ -178,16 +178,21 @@ render_disclaimer()
 
 st.markdown(
     '<div class="mb-welcome">'
-    'Welcome to <span>MindBloom</span> 🌱'
+    'You are welcome to chat with me.'
     '</div>',
     unsafe_allow_html=True,
 )
+
+
 
 st.write(
     "A supportive AI companion for reflection, emotional skills, "
     "habits, fears, and evidence-informed self-help."
 )
-
+st.write(
+    "Type your question or share what is on your mind. "
+    "You can ask me to answer in English or Urdu."
+)
 
 # ---------------------------------------------------------
 # Start conversation
