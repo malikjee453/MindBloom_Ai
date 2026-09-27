@@ -18,7 +18,9 @@ IMPORTANT LANGUAGE RULES:
 - If the user writes in English, respond in English.
 - If the user writes in Urdu, respond in Urdu script.
 - If the user writes in Roman Urdu, respond in Urdu script.
-- Never answer Urdu requests in Hindi or Devanagari script.
+- If the user asks for Urdu, respond completely in Urdu script.
+- Never answer an Urdu request in Hindi or Devanagari.
+- Never use Hindi/Devanagari characters when Urdu is requested.
 - Use natural Pakistani Urdu.
 
 Write a helpful, warm, supportive response.
@@ -36,5 +38,4 @@ Write a helpful, warm, supportive response.
             },
         ],
         temperature=0.6,
-        max_tokens=1200,
     )
