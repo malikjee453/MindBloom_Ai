@@ -1,6 +1,4 @@
 import streamlit as st
-import base64
-from pathlib import Path
 
 from agents.orchestrator import respond
 from core.session import init_session
@@ -11,48 +9,47 @@ from core.ui import render_header
 # Jameel Noori Nastaleeq Urdu Font
 # ---------------------------------------------------------
 
-FONT_PATH = (
-    Path(__file__).resolve().parent.parent
-    / "assets"
-    / "fonts"
-    / "JameelNooriNastaleeq.ttf"
+st.markdown(
+    """
+    <style>
+
+    @font-face {
+        font-family: 'JameelNooriNastaleeq';
+        src: url('/app/static/assets/fonts/JameelNooriNastaleeq.ttf')
+             format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    .urdu-response {
+        font-family: 'JameelNooriNastaleeq',
+                     'Jameel Noori Nastaleeq',
+                     serif !important;
+
+        direction: rtl !important;
+        text-align: right !important;
+
+        font-size: 24px !important;
+        line-height: 2.2 !important;
+
+        unicode-bidi: plaintext !important;
+    }
+
+    .urdu-response * {
+        font-family: 'JameelNooriNastaleeq',
+                     'Jameel Noori Nastaleeq',
+                     serif !important;
+    }
+
+    </style>
+    """,
+    unsafe_allow_html=True,
 )
 
 
-def load_urdu_font():
-    if not FONT_PATH.exists():
-        return
-
-    font_data = base64.b64encode(
-        FONT_PATH.read_bytes()
-    ).decode("utf-8")
-
-    st.markdown(
-        f"""
-        <style>
-        @font-face {{
-            font-family: 'Jameel Noori Nastaleeq';
-            src: url(data:font/ttf;base64,{font_data})
-                 format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }}
-
-        .urdu-response {{
-            font-family: 'Jameel Noori Nastaleeq' !important;
-            direction: rtl;
-            text-align: right;
-            font-size: 22px;
-            line-height: 2.1;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
-
 # ---------------------------------------------------------
-# Detect Urdu text
+# Detect Urdu
 # ---------------------------------------------------------
 
 def contains_urdu(text):
@@ -66,8 +63,6 @@ def contains_urdu(text):
 # ---------------------------------------------------------
 # Initialize
 # ---------------------------------------------------------
-
-load_urdu_font()
 
 init_session()
 
@@ -92,11 +87,18 @@ for message in st.session_state.messages:
             message["role"] == "assistant"
             and contains_urdu(content)
         ):
+
             st.markdown(
-                f'<div class="urdu-response">{content}</div>',
+                f"""
+                <div class="urdu-response">
+                    {content}
+                </div>
+                """,
                 unsafe_allow_html=True,
             )
+
         else:
+
             st.markdown(content)
 
 
@@ -109,7 +111,7 @@ prompt = st.chat_input("What's on your mind?")
 
 if prompt:
 
-    # Show user message
+    # User message
     st.session_state.messages.append(
         {
             "role": "user",
@@ -121,7 +123,7 @@ if prompt:
         st.markdown(prompt)
 
     # -----------------------------------------------------
-    # Generate assistant response
+    # Generate response
     # -----------------------------------------------------
 
     with st.chat_message("assistant"):
@@ -129,6 +131,7 @@ if prompt:
         try:
 
             with st.spinner("Thinking..."):
+
                 answer, sources, route = respond(prompt)
 
         except Exception as e:
@@ -147,7 +150,11 @@ if prompt:
         if contains_urdu(answer):
 
             st.markdown(
-                f'<div class="urdu-response">{answer}</div>',
+                f"""
+                <div class="urdu-response">
+                    {answer}
+                </div>
+                """,
                 unsafe_allow_html=True,
             )
 
@@ -156,7 +163,7 @@ if prompt:
             st.markdown(answer)
 
         # -------------------------------------------------
-        # RAG sources
+        # Knowledge sources
         # -------------------------------------------------
 
         if sources:
@@ -171,10 +178,7 @@ if prompt:
                         f"(similarity {source['score']})"
                     )
 
-    # -----------------------------------------------------
     # Save assistant response
-    # -----------------------------------------------------
-
     st.session_state.messages.append(
         {
             "role": "assistant",
