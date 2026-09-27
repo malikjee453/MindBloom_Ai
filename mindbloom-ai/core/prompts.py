@@ -414,4 +414,7 @@ SPECIALIST_PROMPTS = {
     "ADDICTION": ADDICTION_PROMPT,
     "FEAR": FEAR_PROMPT,
     "GENERAL": GENERAL_PROMPT,
+
+    # Existing key expected by the MindBloom AI agent system
+    "GENERAL_EMOTIONAL_SUPPORT": GENERAL_PROMPT,
 }
