@@ -1,21 +1,19 @@
-# core/groq_client.py
-
 import os
 from groq import Groq
 
 from core.config import GROQ_MODEL
 
 
-_client = Groq(
+client = Groq(
     api_key=os.getenv("GROQ_API_KEY")
 )
 
 
-def chat_completion(messages):
-    response = _client.chat.completions.create(
+def chat(messages, temperature=0.7):
+    response = client.chat.completions.create(
         model=GROQ_MODEL,
         messages=messages,
-        temperature=0.7,
+        temperature=temperature,
     )
 
     return response.choices[0].message.content
