@@ -64,13 +64,13 @@ if prompt:
     with st.chat_message("user"):st.markdown(prompt)
     with st.chat_message("assistant"):
 
-         if contains_urdu(response):
+         if contains_urdu(answer):
         st.markdown(
-            f'<div class="urdu-response">{response}</div>',
+            f'<div class="urdu-response">{answer}</div>',
             unsafe_allow_html=True
         )
     else:
-        st.markdown(response)
+        st.markdown(answer)
         try:
             with st.spinner("Thinking..."): answer,sources,route=respond(prompt)
         except Exception as e:
