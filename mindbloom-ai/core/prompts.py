@@ -378,3 +378,14 @@ Follow the LANGUAGE_PROMPT exactly.
 If the user requests Urdu, the final answer MUST be in
 natural Pakistani Urdu script and MUST NOT contain Hindi/Devanagari.
 """
+
+# ------------------------------------------------------------
+# Specialist prompts dictionary
+# ------------------------------------------------------------
+
+SPECIALIST_PROMPTS = {
+    "MENTAL_DISCOMFORT": MENTAL_DISCOMFORT_PROMPT,
+    "ADDICTION": ADDICTION_PROMPT,
+    "FEAR": FEAR_PROMPT,
+    "GENERAL": GENERAL_PROMPT,
+}
