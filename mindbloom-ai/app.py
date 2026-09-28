@@ -109,12 +109,30 @@ st.markdown(
 /* Welcome heading */
 
 .mb-welcome {
-    color: #17231D;
-    font-size: 2.25rem;
-    font-weight: 750;
-    letter-spacing: -0.8px;
-    margin-top: 18px;
-    margin-bottom: 8px;
+    font-family:
+        "Trebuchet MS",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 2.15rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.25;
+
+    background: linear-gradient(
+        135deg,
+        #173B2D 0%,
+        #2F7655 50%,
+        #5A9E78 100%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    margin-top: 24px;
+    margin-bottom: 12px;
 }
 
 .mb-welcome span {
@@ -230,7 +248,8 @@ render_disclaimer()
 
 st.markdown(
     '<div class="mb-welcome">'
-    'You are welcome to chat with me, Any topic you cant share with anyone.'
+    'You are welcome to chat with me,<br>'
+    'Any topic you can’t share with anyone.'
     '</div>',
     unsafe_allow_html=True,
 )
