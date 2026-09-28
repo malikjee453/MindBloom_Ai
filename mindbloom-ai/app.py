@@ -150,20 +150,18 @@ div.stButton > button {
     border: none;
     border-radius: 14px;
 
-    font-size: 1.05rem;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 1.2rem;
     font-weight: 700;
 
-    padding: 0.85rem 2.2rem;
+    min-height: 62px;
+    min-width: 300px;
 
-    min-height: 56px;
-    min-width: 260px;
+    padding: 0.9rem 2rem;
 
-    box-shadow:
-        0 8px 20px rgba(47, 118, 85, 0.22);
+    box-shadow: 0 8px 20px rgba(47, 118, 85, 0.22);
 
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 div.stButton > button:hover {
@@ -177,8 +175,7 @@ div.stButton > button:hover {
 
     transform: translateY(-2px);
 
-    box-shadow:
-        0 12px 25px rgba(47, 118, 85, 0.30);
+    box-shadow: 0 12px 26px rgba(47, 118, 85, 0.30);
 }
 
 /* Disclaimer */
