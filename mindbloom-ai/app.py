@@ -140,19 +140,46 @@ st.markdown(
 /* Start button */
 
 div.stButton > button {
-    background: #3F8060;
+    background: linear-gradient(
+        135deg,
+        #2F7655,
+        #438B66
+    );
+
     color: white;
     border: none;
-    border-radius: 10px;
-    font-weight: 650;
-    padding: 0.55rem 1.15rem;
+    border-radius: 14px;
+
+    font-size: 1.05rem;
+    font-weight: 700;
+
+    padding: 0.85rem 2.2rem;
+
+    min-height: 56px;
+    min-width: 260px;
+
+    box-shadow:
+        0 8px 20px rgba(47, 118, 85, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 div.stButton > button:hover {
-    background: #326B4F;
-    color: white;
-}
+    background: linear-gradient(
+        135deg,
+        #286648,
+        #397A59
+    );
 
+    color: white;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(47, 118, 85, 0.30);
+}
 
 /* Disclaimer */
 
