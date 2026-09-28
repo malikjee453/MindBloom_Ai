@@ -156,7 +156,7 @@ st.markdown(
     '</div>'
     '</div>'
     '<div class="mb-tagline">'
-    'A supportive AI companion for emotional growth, habits, and fears.'
+    'A supportive AI companion for emotional growth, habits, and fears,and evidence-informed self-help.'
     '</div>'
     '<div class="mb-builder">'
     'Built by: Engr. Mubashir Malik'
@@ -184,11 +184,6 @@ st.markdown(
 )
 
 
-
-st.write(
-    "A supportive AI companion for reflection, emotional skills, "
-    "habits, fears, and evidence-informed self-help."
-)
 st.write(
     "Type your question or share what is on your mind. "
     "You can ask me to answer in English or Urdu."
