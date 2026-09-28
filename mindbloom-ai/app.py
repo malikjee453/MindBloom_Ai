@@ -180,7 +180,7 @@ div.stButton > button {
 
 /* Actual text inside the Streamlit button */
 div.stButton > button p {
-    font-size: 1.35rem !important;
+    font-size: 2.0rem !important;
     font-weight: 700 !important;
     color: white !important;
     line-height: 1.2 !important;
