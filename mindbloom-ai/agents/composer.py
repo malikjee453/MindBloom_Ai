@@ -3,6 +3,7 @@ from core.prompts import COMPOSER_PROMPT
 
 
 def compose_response(user_text, specialist_analysis, safety_note=""):
+
     prompt = f"""
 User message:
 {user_text}
@@ -12,6 +13,23 @@ Specialist analysis:
 
 Safety note:
 {safety_note}
+
+IMPORTANT RESPONSE STYLE:
+
+- Keep the answer SHORT and conversational.
+- Usually answer in 3–6 short paragraphs or bullet points.
+- Aim for approximately 80–150 words.
+- Do NOT write an essay or lecture.
+- Give only the most useful points.
+- Avoid repeating the user's question.
+- Avoid unnecessary background information.
+- Use simple, natural language.
+- Be warm, empathetic, and human.
+- Give one or two practical suggestions rather than a long list.
+- If a question can be answered in 2–4 sentences, do that.
+- Ask a short follow-up question when it would help continue the conversation.
+- Do not overwhelm the user with too much information.
+- If the user asks for detailed information, you may provide more detail.
 
 IMPORTANT LANGUAGE RULES:
 
@@ -23,7 +41,7 @@ IMPORTANT LANGUAGE RULES:
 - Never use Hindi/Devanagari characters when Urdu is requested.
 - Use natural Pakistani Urdu.
 
-Write a helpful, warm, supportive response.
+Write the final response now.
 """
 
     return chat(
