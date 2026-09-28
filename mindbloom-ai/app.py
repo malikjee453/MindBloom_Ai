@@ -178,7 +178,7 @@ render_disclaimer()
 
 st.markdown(
     '<div class="mb-welcome">'
-    'You are welcome to chat with me.'
+    'You are welcome to chat with me on any Topic.'
     '</div>',
     unsafe_allow_html=True,
 )
@@ -214,7 +214,7 @@ with c1:
 
     st.markdown(
         '<div class="mb-feature-text">'
-        'Use Chat for supportive conversations.'
+        'Talk to me, I can help.'
         '</div>',
         unsafe_allow_html=True,
     )
@@ -229,7 +229,7 @@ with c2:
 
     st.markdown(
         '<div class="mb-feature-text">'
-        'Work through discomforts, habits, and fears.'
+        'Find your discomforts, habits, and fears here.'
         '</div>',
         unsafe_allow_html=True,
     )
@@ -244,7 +244,7 @@ with c3:
 
     st.markdown(
         '<div class="mb-feature-text">'
-        'Upload trusted books and documents for RAG.'
+        'Upload books and documents and ask question from it, only for short term memory.'
         '</div>',
         unsafe_allow_html=True,
     )
