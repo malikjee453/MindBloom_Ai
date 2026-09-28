@@ -239,13 +239,6 @@ st.write(
     "You can ask me to answer in English or Urdu."
 )
 
-# ---------------------------------------------------------
-# Start conversation
-# ---------------------------------------------------------
-
-if st.button("💬  Start a conversation"):
-
-    st.switch_page("pages/1_Chat.py")
 
 
 # ---------------------------------------------------------
@@ -297,4 +290,22 @@ with c3:
         'Upload books and documents and ask question from it, only for short term memory.'
         '</div>',
         unsafe_allow_html=True,
+        
+# ---------------------------------------------------------
+# Start conversation
+# ---------------------------------------------------------
+
+        st.markdown("<br>", unsafe_allow_html=True)
+
+button_col1, button_col2, button_col3 = st.columns(
+    [1, 1.4, 1]
+)
+
+with button_col2:
+
+    if st.button(
+        "💬  Start a conversation",
+        use_container_width=True,
+    ):
+        st.switch_page("pages/1_Chat.py")
     )
