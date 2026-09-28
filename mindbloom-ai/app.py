@@ -52,21 +52,44 @@ st.markdown(
 }
 
 .mb-name {
-    color: #17231D;
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 3rem;
-    font-weight: 800;
-    letter-spacing: -1.8px;
+    font-family:
+        "Trebuchet MS",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 3.25rem;
+    font-weight: 900;
+    letter-spacing: -2.8px;
     line-height: 1;
+
+    background: linear-gradient(
+        135deg,
+        #173B2D 0%,
+        #2F7655 48%,
+        #5A9E78 100%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .mb-ai {
-    color: #3F8060;
+    color: #D28B35;
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
     font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+
     vertical-align: super;
-    margin-left: 4px;
+    margin-left: 6px;
+
+    -webkit-text-fill-color: #D28B35;
 }
 
 .mb-tagline {
