@@ -14,34 +14,32 @@ Specialist analysis:
 Safety note:
 {safety_note}
 
-IMPORTANT RESPONSE STYLE:
+STRICT RESPONSE LENGTH:
 
-- Keep the answer SHORT and conversational.
-- Usually answer in 3–6 short paragraphs or bullet points.
-- Aim for approximately 80–150 words.
-- Do NOT write an essay or lecture.
-- Give only the most useful points.
-- Avoid repeating the user's question.
-- Avoid unnecessary background information.
-- Use simple, natural language.
-- Be warm, empathetic, and human.
-- Give one or two practical suggestions rather than a long list.
-- If a question can be answered in 2–4 sentences, do that.
-- Ask a short follow-up question when it would help continue the conversation.
-- Do not overwhelm the user with too much information.
-- If the user asks for detailed information, you may provide more detail.
+- Maximum 100 words.
+- Prefer 40–80 words.
+- Usually use only 2–4 short paragraphs.
+- Do NOT write an essay.
+- Do NOT give long explanations.
+- Do NOT repeat the user's question.
+- Give only the most useful advice.
+- Give at most 2 practical suggestions.
+- Ask at most ONE short follow-up question.
+- If the answer can be given in 2–3 sentences, stop there.
+- Do not add extra information just to make the response longer.
 
-IMPORTANT LANGUAGE RULES:
+IMPORTANT:
+The response must feel like a short, natural conversation with a supportive friend.
 
-- If the user writes in English, respond in English.
-- If the user writes in Urdu, respond in Urdu script.
-- If the user writes in Roman Urdu, respond in Urdu script.
-- If the user asks for Urdu, respond completely in Urdu script.
-- Never answer an Urdu request in Hindi or Devanagari.
-- Never use Hindi/Devanagari characters when Urdu is requested.
-- Use natural Pakistani Urdu.
+LANGUAGE:
 
-Write the final response now.
+- English input → English response.
+- Urdu script input → Pakistani Urdu script.
+- Roman Urdu input → Pakistani Urdu script.
+- If Urdu is requested → completely Urdu script.
+- NEVER use Hindi/Devanagari.
+
+Now write ONLY the final response.
 """
 
     return chat(
@@ -55,5 +53,6 @@ Write the final response now.
                 "content": prompt,
             },
         ],
-        temperature=0.6,
+        temperature=0.5,
+        max_tokens=180,
     )
