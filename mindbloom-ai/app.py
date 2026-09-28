@@ -178,7 +178,7 @@ render_disclaimer()
 
 st.markdown(
     '<div class="mb-welcome">'
-    'You are welcome to chat with me on any Topic.'
+    'Welcome to chat with me, Anything you can't tell anyone.'
     '</div>',
     unsafe_allow_html=True,
 )
