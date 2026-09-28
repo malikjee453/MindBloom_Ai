@@ -144,24 +144,29 @@ div.stButton > button {
         135deg,
         #2F7655,
         #438B66
-    );
+    ) !important;
 
-    color: white;
-    border: none;
-    border-radius: 14px;
+    color: white !important;
+    border: none !important;
+    border-radius: 14px !important;
 
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
+    min-height: 68px !important;
+    min-width: 320px !important;
 
-    min-height: 62px;
-    min-width: 300px;
-
-    padding: 0.9rem 2rem;
+    padding: 12px 28px !important;
 
     box-shadow: 0 8px 20px rgba(47, 118, 85, 0.22);
 
     transition: all 0.2s ease;
+}
+
+/* Actual text inside the Streamlit button */
+div.stButton > button p {
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    color: white !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
 }
 
 div.stButton > button:hover {
@@ -169,9 +174,9 @@ div.stButton > button:hover {
         135deg,
         #286648,
         #397A59
-    );
+    ) !important;
 
-    color: white;
+    color: white !important;
 
     transform: translateY(-2px);
 
