@@ -290,7 +290,7 @@ with c3:
         'Upload books and documents and ask question from it, only for short term memory.'
         '</div>',
         unsafe_allow_html=True,
-        
+    )
 # ---------------------------------------------------------
 # Start conversation
 # ---------------------------------------------------------
