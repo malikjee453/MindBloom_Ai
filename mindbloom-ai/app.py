@@ -240,7 +240,6 @@ st.write(
 )
 
 
-
 # ---------------------------------------------------------
 # Features
 # ---------------------------------------------------------
@@ -272,7 +271,8 @@ with c2:
 
     st.markdown(
         '<div class="mb-feature-text">'
-        'Find your discomforts, habits, addictions, and fears here and get advise to overcome them.'
+        'Find your discomforts, habits, addictions, and fears '
+        'here and get advice to overcome them.'
         '</div>',
         unsafe_allow_html=True,
     )
@@ -287,17 +287,18 @@ with c3:
 
     st.markdown(
         '<div class="mb-feature-text">'
-        'Upload books and documents and ask question from it, only for short term memory.'
+        'Upload books and documents and ask questions from them '
+        'for short-term memory.'
         '</div>',
         unsafe_allow_html=True,
     )
 
-    
+
 # ---------------------------------------------------------
-# Start conversation
+# Start conversation button
 # ---------------------------------------------------------
 
-        st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
 
 button_col1, button_col2, button_col3 = st.columns(
     [1, 1.4, 1]
@@ -310,4 +311,3 @@ with button_col2:
         use_container_width=True,
     ):
         st.switch_page("pages/1_Chat.py")
-    )
