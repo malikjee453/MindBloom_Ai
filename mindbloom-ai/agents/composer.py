@@ -14,26 +14,35 @@ Specialist analysis:
 Safety note:
 {safety_note}
 
-RESPONSE LENGTH:
-- Keep the response SHORT.
-- Aim for 40–80 words.
-- Maximum approximately 100 words.
-- Use 2–4 short paragraphs.
-- Give only the most useful information.
-- Give at most 2 practical suggestions.
-- Ask at most 1 short follow-up question.
+RESPONSE STYLE:
+
+Write a concise but complete answer.
+
+- Aim for 80–130 words.
+- Do not exceed 150 words for a normal question.
+- Use 3–5 short paragraphs OR a few clear bullet points.
+- First acknowledge what the user is experiencing.
+- Then give a simple, useful explanation.
+- Give 1–3 practical suggestions when appropriate.
+- End with one short question only when it naturally helps.
 - Do not write an essay.
+- Do not give unnecessary background information.
 - Do not repeat the user's question.
-- Stop when the useful answer is complete.
+- Do not make the response so short that it becomes vague or confusing.
+- Every sentence should add useful meaning.
+- Prefer clear, simple language over complicated terminology.
+
+The response should feel like a thoughtful conversation with a
+supportive friend, not a textbook or medical article.
 
 LANGUAGE:
-- English input → English.
-- Urdu script input → Pakistani Urdu script.
-- Roman Urdu input → Pakistani Urdu script.
-- If Urdu is requested → completely Urdu script.
-- Never use Hindi/Devanagari.
+- English input → English response.
+- Urdu script input → natural Pakistani Urdu script.
+- Roman Urdu input → natural Pakistani Urdu script.
+- If Urdu is explicitly requested → completely Urdu script.
+- NEVER use Hindi/Devanagari.
 
-Write ONLY the final answer to the user.
+Write ONLY the final response.
 """
 
     return chat(
@@ -47,5 +56,5 @@ Write ONLY the final answer to the user.
                 "content": prompt,
             },
         ],
-        temperature=0.5,
+        temperature=0.6,
     )
