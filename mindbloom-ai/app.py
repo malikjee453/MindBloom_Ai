@@ -229,7 +229,7 @@ with c2:
 
     st.markdown(
         '<div class="mb-feature-text">'
-        'Find your discomforts, habits, and fears here.'
+        'Find your discomforts, habits, addictions, and fears here and get advise to overcome them.'
         '</div>',
         unsafe_allow_html=True,
     )
