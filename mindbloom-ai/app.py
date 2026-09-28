@@ -293,21 +293,14 @@ with c3:
         unsafe_allow_html=True,
     )
 
-
 # ---------------------------------------------------------
 # Start conversation button
 # ---------------------------------------------------------
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-button_col1, button_col2, button_col3 = st.columns(
-    [1, 1.4, 1]
-)
-
-with button_col2:
-
-    if st.button(
-        "💬  Start a conversation",
-        use_container_width=True,
-    ):
-        st.switch_page("pages/1_Chat.py")
+if st.button(
+    "💬  Start a conversation",
+    key="start_conversation",
+):
+    st.switch_page("pages/1_Chat.py")
