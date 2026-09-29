@@ -31,6 +31,64 @@ st.markdown(
     """
 <style>
 
+/* ===== REMOVE STREAMLIT WASHED/DIM EFFECT ===== */
+
+.stApp,
+[data-testid="stAppViewContainer"],
+[data-testid="stAppViewBlockContainer"],
+[data-testid="stMain"],
+.main,
+section[data-testid="stSidebar"],
+[data-testid="stSidebarContent"],
+header {
+    opacity: 1 !important;
+    filter: none !important;
+    visibility: visible !important;
+}
+
+/* Remove accidental transparent overlays */
+.stApp::before,
+.stApp::after,
+[data-testid="stAppViewContainer"]::before,
+[data-testid="stAppViewContainer"]::after,
+[data-testid="stMain"]::before,
+[data-testid="stMain"]::after {
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+/* Make normal page text solid */
+.stApp p,
+.stApp span,
+.stApp div,
+.stApp label,
+.stApp li,
+.stApp a {
+    opacity: 1 !important;
+}
+
+/* Normal text */
+.stApp {
+    color: #26382f !important;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+section[data-testid="stSidebar"] * {
+    opacity: 1 !important;
+    filter: none !important;
+    color: #40564b !important;
+}
+
+/* Main content */
+[data-testid="stMain"] * {
+    opacity: 1 !important;
+    filter: none !important;
+}
 .main .block-container {
     max-width: 1100px;
     padding-top: 2.5rem;
