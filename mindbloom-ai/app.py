@@ -4,333 +4,300 @@ from core.config import APP_NAME, APP_TAGLINE, BUILDER
 from core.session import init_session
 from core.ui import render_disclaimer
 
-
-# ---------------------------------------------------------
-# Page configuration
-# ---------------------------------------------------------
-
 st.set_page_config(
     page_title="MindBloom AI",
     page_icon="🌱",
     layout="wide",
 )
 
-
-# ---------------------------------------------------------
-# Session
-# ---------------------------------------------------------
-
 init_session()
 
 
-# ---------------------------------------------------------
-# Professional but subtle styling
-# ---------------------------------------------------------
+# =========================================================
+# MIND BLOOM UI STYLING
+# =========================================================
 
 st.markdown(
     """
-<style>
+    <style>
 
-/* ===== REMOVE STREAMLIT WASHED/DIM EFFECT ===== */
+    /* -----------------------------------------------------
+       1. PREVENT STREAMLIT DIMMING / STALE ELEMENT OPACITY
+       ----------------------------------------------------- */
 
-.stApp,
-[data-testid="stAppViewContainer"],
-[data-testid="stAppViewBlockContainer"],
-[data-testid="stMain"],
-.main,
-section[data-testid="stSidebar"],
-[data-testid="stSidebarContent"],
-header {
-    opacity: 1 !important;
-    filter: none !important;
-    visibility: visible !important;
-}
+    [data-testid="stAppViewBlockContainer"],
+    [data-testid="stAppViewBlockContainer"] *,
+    .element-container,
+    [data-stale="true"],
+    [data-stale="true"] * {
+        opacity: 1 !important;
+        filter: none !important;
+        transition: none !important;
+    }
 
-/* Remove accidental transparent overlays */
-.stApp::before,
-.stApp::after,
-[data-testid="stAppViewContainer"]::before,
-[data-testid="stAppViewContainer"]::after,
-[data-testid="stMain"]::before,
-[data-testid="stMain"]::after {
-    opacity: 1 !important;
-    filter: none !important;
-}
+    /* Prevent dimming while Streamlit is running */
+    [data-testid="stApp"][data-test-script-state="running"] {
+        opacity: 1 !important;
+    }
 
-/* Make normal page text solid */
-.stApp p,
-.stApp span,
-.stApp div,
-.stApp label,
-.stApp li,
-.stApp a {
-    opacity: 1 !important;
-}
-
-/* Normal text */
-.stApp {
-    color: #26382f !important;
-}
-
-/* Sidebar */
-section[data-testid="stSidebar"] {
-    opacity: 1 !important;
-    filter: none !important;
-}
-
-section[data-testid="stSidebar"] * {
-    opacity: 1 !important;
-    filter: none !important;
-    color: #40564b !important;
-}
-
-/* Main content */
-[data-testid="stMain"] * {
-    opacity: 1 !important;
-    filter: none !important;
-}
-.main .block-container {
-    max-width: 1100px;
-    padding-top: 2.5rem;
-    padding-bottom: 3rem;
-}
-/* ===== MindBloom text contrast ===== */
-
-html, body, [class*="css"] {
-    color: #26382f !important;
-}
-
-/* Main text */
-.stMarkdown,
-.stMarkdown p,
-.stMarkdown li,
-.stMarkdown span {
-    color: #33483d !important;
-}
-
-/* Captions and secondary text */
-.stCaption,
-[data-testid="stCaptionContainer"] {
-    color: #5f7067 !important;
-}
-
-/* Sidebar */
-section[data-testid="stSidebar"] * {
-    color: #40564b !important;
-}
-
-/* Sidebar navigation */
-section[data-testid="stSidebar"] a,
-section[data-testid="stSidebar"] p,
-section[data-testid="stSidebar"] span {
-    color: #40564b !important;
-}
-
-/* Feature text */
-.mb-feature-text {
-    color: #4d6258 !important;
-}
-
-/* Tagline */
-.mb-tagline {
-    color: #53675d !important;
-}
-
-/* Builder */
-.mb-builder {
-    color: #66776e !important;
-}
-
-/* Welcome heading stays strong */
-.mb-welcome {
-    color: #234b39 !important;
-}
-
-/* Button text stays white */
-div.stButton > button,
-div.stButton > button p {
-    color: white !important;
-}
-/* Main brand */
-
-.mb-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 6px;
-}
-
-.mb-logo {
-    font-size: 2.7rem;
-    line-height: 1;
-}
-
-.mb-name {
-    font-family:
-        "Trebuchet MS",
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    font-size: 3.25rem;
-    font-weight: 900;
-    letter-spacing: -2.8px;
-    line-height: 1;
-
-    background: linear-gradient(
-        135deg,
-        #173B2D 0%,
-        #2F7655 48%,
-        #5A9E78 100%
-    );
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.mb-ai {
-    color: #D28B35;
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    font-size: 1rem;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-
-    vertical-align: super;
-    margin-left: 6px;
-
-    -webkit-text-fill-color: #D28B35;
-}
-
-.mb-tagline {
-    color: #66756D;
-    font-size: 1rem;
-    margin-top: 10px;
-}
-
-.mb-builder {
-    color: #8A9790;
-    font-size: 0.8rem;
-    margin-top: 5px;
-    margin-bottom: 28px;
-}
+    [data-testid="stApp"][data-test-script-state="running"]
+    [data-testid="stAppViewContainer"] {
+        opacity: 1 !important;
+        filter: none !important;
+    }
 
 
-/* Welcome heading */
+    /* -----------------------------------------------------
+       2. MAIN PAGE
+       ----------------------------------------------------- */
 
-.mb-welcome {
-    font-family:
-        "Trebuchet MS",
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    [data-testid="stMain"] {
+        opacity: 1 !important;
+        filter: none !important;
+    }
 
-    font-size: 2.15rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-    line-height: 1.25;
+    [data-testid="stMain"] > div {
+        opacity: 1 !important;
+        filter: none !important;
+    }
 
-    background: linear-gradient(
-        135deg,
-        #173B2D 0%,
-        #2F7655 50%,
-        #5A9E78 100%
-    );
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-
-    margin-top: 24px;
-    margin-bottom: 12px;
-}
-
-.mb-welcome span {
-    color: #3F8060;
-}
+    .main .block-container {
+        max-width: 1100px;
+        padding-top: 2.5rem;
+        padding-bottom: 3rem;
+    }
 
 
-/* Feature headings */
+    /* -----------------------------------------------------
+       3. SIDEBAR
+       ----------------------------------------------------- */
 
-.mb-feature-title {
-    color: #17231D;
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-}
+    section[data-testid="stSidebar"] {
+        opacity: 1 !important;
+        filter: none !important;
+    }
 
-.mb-feature-text {
-    color: #66756D;
-    line-height: 1.6;
-}
+    section[data-testid="stSidebarContent"] {
+        opacity: 1 !important;
+        filter: none !important;
+    }
+
+    section[data-testid="stSidebar"] a,
+    section[data-testid="stSidebar"] p,
+    section[data-testid="stSidebar"] span {
+        color: #40564b !important;
+    }
 
 
-/* Start button */
+    /* -----------------------------------------------------
+       4. GENERAL TEXT
+       ----------------------------------------------------- */
 
-div.stButton > button {
-    background: linear-gradient(
-        135deg,
-        #2F7655,
-        #438B66
-    ) !important;
+    .stMarkdown p,
+    .stMarkdown li {
+        color: #33483d;
+    }
 
-    color: white !important;
-    border: none !important;
-    border-radius: 14px !important;
+    [data-testid="stCaptionContainer"] {
+        color: #5f7067 !important;
+    }
 
-    min-height: 68px !important;
-    min-width: 320px !important;
 
-    padding: 12px 28px !important;
+    /* -----------------------------------------------------
+       5. MINDBLOOM BRAND
+       ----------------------------------------------------- */
 
-    box-shadow: 0 8px 20px rgba(47, 118, 85, 0.22);
+    .mb-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 6px;
+    }
 
-    transition: all 0.2s ease;
-}
+    .mb-logo {
+        font-size: 2.7rem;
+        line-height: 1;
+    }
 
-/* Actual text inside the Streamlit button */
-div.stButton > button p {
-    font-size: 2.0rem !important;
-    font-weight: 700 !important;
-    color: white !important;
-    line-height: 1.2 !important;
-    margin: 0 !important;
-}
+    .mb-name {
+        font-family:
+            "Trebuchet MS",
+            "Segoe UI",
+            Arial,
+            sans-serif;
 
-div.stButton > button:hover {
-    background: linear-gradient(
-        135deg,
-        #286648,
-        #397A59
-    ) !important;
+        font-size: 3.25rem;
+        font-weight: 900;
+        letter-spacing: -2.8px;
+        line-height: 1;
 
-    color: white !important;
+        background: linear-gradient(
+            135deg,
+            #173B2D 0%,
+            #2F7655 48%,
+            #5A9E78 100%
+        );
 
-    transform: translateY(-2px);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 
-    box-shadow: 0 12px 26px rgba(47, 118, 85, 0.30);
-}
+    .mb-ai {
+        color: #D28B35;
 
-/* Disclaimer */
+        font-family:
+            "Segoe UI",
+            Arial,
+            sans-serif;
 
-div[data-testid="stExpander"] {
-    border-radius: 12px;
-    border-color: #DDE6DF;
-}
+        font-size: 1rem;
+        font-weight: 800;
+        letter-spacing: 1.5px;
 
-</style>
-""",
+        vertical-align: super;
+        margin-left: 6px;
+    }
+
+
+    /* -----------------------------------------------------
+       6. TAGLINE / BUILDER
+       ----------------------------------------------------- */
+
+    .mb-tagline {
+        color: #53675d !important;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+
+    .mb-builder {
+        color: #66776e !important;
+        font-size: 0.8rem;
+        margin-top: 5px;
+        margin-bottom: 28px;
+    }
+
+
+    /* -----------------------------------------------------
+       7. WELCOME MESSAGE
+       ----------------------------------------------------- */
+
+    .mb-welcome {
+        font-family:
+            "Trebuchet MS",
+            "Segoe UI",
+            Arial,
+            sans-serif;
+
+        font-size: 2.15rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        line-height: 1.25;
+
+        background: linear-gradient(
+            135deg,
+            #173B2D 0%,
+            #2F7655 50%,
+            #5A9E78 100%
+        );
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+
+        margin-top: 24px;
+        margin-bottom: 12px;
+    }
+
+
+    /* -----------------------------------------------------
+       8. FEATURE SECTIONS
+       ----------------------------------------------------- */
+
+    .mb-feature-title {
+        color: #17231D !important;
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    .mb-feature-text {
+        color: #4d6258 !important;
+        line-height: 1.6;
+    }
+
+
+    /* -----------------------------------------------------
+       9. START CONVERSATION BUTTON
+       ----------------------------------------------------- */
+
+    div.stButton > button {
+        background: linear-gradient(
+            135deg,
+            #2F7655,
+            #438B66
+        ) !important;
+
+        color: white !important;
+
+        border: none !important;
+        border-radius: 14px !important;
+
+        min-height: 68px !important;
+        min-width: 320px !important;
+
+        padding: 12px 28px !important;
+
+        box-shadow:
+            0 8px 20px rgba(47, 118, 85, 0.22);
+
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    div.stButton > button p {
+        font-size: 2rem !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.2 !important;
+        margin: 0 !important;
+    }
+
+    div.stButton > button:hover {
+        background: linear-gradient(
+            135deg,
+            #286648,
+            #397A59
+        ) !important;
+
+        color: white !important;
+
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 12px 26px rgba(47, 118, 85, 0.30);
+    }
+
+
+    /* -----------------------------------------------------
+       10. DISCLAIMER
+       ----------------------------------------------------- */
+
+    div[data-testid="stExpander"] {
+        border-radius: 12px;
+        border-color: #DDE6DF;
+    }
+
+    </style>
+    """,
     unsafe_allow_html=True,
 )
 
 
-# ---------------------------------------------------------
-# MindBloom brand
-# ---------------------------------------------------------
+# =========================================================
+# HEADER
+# =========================================================
 
 st.markdown(
     '<div class="mb-brand">'
@@ -340,7 +307,8 @@ st.markdown(
     '</div>'
     '</div>'
     '<div class="mb-tagline">'
-    'A supportive AI companion for emotional growth, habits, and fears,and evidence-informed self-help.'
+    'A supportive AI companion for emotional growth, habits, fears, '
+    'and evidence-informed self-help.'
     '</div>'
     '<div class="mb-builder">'
     'Built by: Engr. Mubashir Malik'
@@ -349,25 +317,24 @@ st.markdown(
 )
 
 
-# ---------------------------------------------------------
-# Wellbeing note
-# ---------------------------------------------------------
+# =========================================================
+# DISCLAIMER
+# =========================================================
 
 render_disclaimer()
 
 
-# ---------------------------------------------------------
-# Welcome
-# ---------------------------------------------------------
+# =========================================================
+# WELCOME
+# =========================================================
 
 st.markdown(
     '<div class="mb-welcome">'
     'You are welcome to talk to me,<br>'
-    'About anything you cant share with anyone.'
+    'About anything you can\'t share with anyone.'
     '</div>',
     unsafe_allow_html=True,
 )
-
 
 st.write(
     "Type your question or share what is on your mind. "
@@ -375,15 +342,13 @@ st.write(
 )
 
 
-# ---------------------------------------------------------
-# Features
-# ---------------------------------------------------------
+# =========================================================
+# FEATURES
+# =========================================================
 
 c1, c2, c3 = st.columns(3)
 
-
 with c1:
-
     st.markdown(
         '<div class="mb-feature-title">💬 Talk</div>',
         unsafe_allow_html=True,
@@ -398,7 +363,6 @@ with c1:
 
 
 with c2:
-
     st.markdown(
         '<div class="mb-feature-title">🧠 Explore</div>',
         unsafe_allow_html=True,
@@ -414,7 +378,6 @@ with c2:
 
 
 with c3:
-
     st.markdown(
         '<div class="mb-feature-title">📚 Learn</div>',
         unsafe_allow_html=True,
@@ -428,9 +391,10 @@ with c3:
         unsafe_allow_html=True,
     )
 
-# ---------------------------------------------------------
-# Start conversation button
-# ---------------------------------------------------------
+
+# =========================================================
+# START CONVERSATION
+# =========================================================
 
 st.markdown("<br>", unsafe_allow_html=True)
 
