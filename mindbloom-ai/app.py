@@ -1,8 +1,12 @@
 import streamlit as st
 
-from core.config import APP_NAME, APP_TAGLINE, BUILDER
 from core.session import init_session
 from core.ui import render_disclaimer
+
+
+# =========================================================
+# PAGE CONFIGURATION
+# =========================================================
 
 st.set_page_config(
     page_title="MindBloom AI",
@@ -10,108 +14,116 @@ st.set_page_config(
     layout="wide",
 )
 
+
+# =========================================================
+# SESSION
+# =========================================================
+
 init_session()
 
 
 # =========================================================
-# MIND BLOOM UI STYLING
+# MINDBLOOM CSS
 # =========================================================
 
 st.markdown(
     """
     <style>
 
-    /* -----------------------------------------------------
-       1. PREVENT STREAMLIT DIMMING / STALE ELEMENT OPACITY
-       ----------------------------------------------------- */
+    /* =====================================================
+       FORCE FULL VISIBILITY
+       ===================================================== */
 
+    [data-testid="stApp"],
+    [data-testid="stAppViewContainer"],
     [data-testid="stAppViewBlockContainer"],
-    [data-testid="stAppViewBlockContainer"] *,
-    .element-container,
+    [data-testid="stMain"],
+    [data-testid="stMainBlockContainer"],
+    [data-testid="stVerticalBlock"],
+    [data-testid="stHorizontalBlock"],
+    .main,
+    .block-container {
+        opacity: 1 !important;
+        filter: none !important;
+    }
+
+    /* Streamlit stale elements */
     [data-stale="true"],
-    [data-stale="true"] * {
+    [data-stale="true"] *,
+    .element-container,
+    .element-container * {
         opacity: 1 !important;
         filter: none !important;
         transition: none !important;
     }
 
-    /* Prevent dimming while Streamlit is running */
-    [data-testid="stApp"][data-test-script-state="running"] {
-        opacity: 1 !important;
-    }
-
-    [data-testid="stApp"][data-test-script-state="running"]
-    [data-testid="stAppViewContainer"] {
+    /* Streamlit running state */
+    [data-testid="stApp"][data-test-script-state="running"],
+    [data-testid="stApp"][data-test-script-state="running"] *,
+    [data-testid="stAppViewContainer"][data-test-script-state="running"],
+    [data-testid="stAppViewContainer"][data-test-script-state="running"] * {
         opacity: 1 !important;
         filter: none !important;
     }
 
 
-    /* -----------------------------------------------------
-       2. MAIN PAGE
-       ----------------------------------------------------- */
-
-    [data-testid="stMain"] {
-        opacity: 1 !important;
-        filter: none !important;
-    }
-
-    [data-testid="stMain"] > div {
-        opacity: 1 !important;
-        filter: none !important;
-    }
+    /* =====================================================
+       MAIN CONTENT
+       ===================================================== */
 
     .main .block-container {
-        max-width: 1100px;
-        padding-top: 2.5rem;
-        padding-bottom: 3rem;
+        max-width: 1100px !important;
+        padding-top: 2.5rem !important;
+        padding-bottom: 3rem !important;
     }
 
 
-    /* -----------------------------------------------------
-       3. SIDEBAR
-       ----------------------------------------------------- */
+    /* =====================================================
+       NORMAL TEXT
+       ===================================================== */
 
-    section[data-testid="stSidebar"] {
-        opacity: 1 !important;
-        filter: none !important;
-    }
-
-    section[data-testid="stSidebarContent"] {
-        opacity: 1 !important;
-        filter: none !important;
-    }
-
-    section[data-testid="stSidebar"] a,
-    section[data-testid="stSidebar"] p,
-    section[data-testid="stSidebar"] span {
-        color: #40564b !important;
-    }
-
-
-    /* -----------------------------------------------------
-       4. GENERAL TEXT
-       ----------------------------------------------------- */
-
+    .stApp p,
+    .stApp li,
+    .stApp label,
     .stMarkdown p,
     .stMarkdown li {
-        color: #33483d;
+        color: #26382F !important;
+        opacity: 1 !important;
     }
 
     [data-testid="stCaptionContainer"] {
-        color: #5f7067 !important;
+        color: #53675D !important;
+        opacity: 1 !important;
     }
 
 
-    /* -----------------------------------------------------
-       5. MINDBLOOM BRAND
-       ----------------------------------------------------- */
+    /* =====================================================
+       SIDEBAR
+       ===================================================== */
+
+    [data-testid="stSidebar"],
+    [data-testid="stSidebar"] * {
+        opacity: 1 !important;
+        filter: none !important;
+    }
+
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] span,
+    [data-testid="stSidebar"] a {
+        color: #26382F !important;
+    }
+
+
+    /* =====================================================
+       MINDBLOOM BRAND
+       ===================================================== */
 
     .mb-brand {
         display: flex;
         align-items: center;
         gap: 12px;
         margin-bottom: 6px;
+        opacity: 1 !important;
     }
 
     .mb-logo {
@@ -144,7 +156,8 @@ st.markdown(
     }
 
     .mb-ai {
-        color: #D28B35;
+        color: #C77B22 !important;
+        -webkit-text-fill-color: #C77B22 !important;
 
         font-family:
             "Segoe UI",
@@ -160,27 +173,36 @@ st.markdown(
     }
 
 
-    /* -----------------------------------------------------
-       6. TAGLINE / BUILDER
-       ----------------------------------------------------- */
+    /* =====================================================
+       TAGLINE
+       ===================================================== */
 
     .mb-tagline {
-        color: #53675d !important;
+        color: #40564B !important;
+        opacity: 1 !important;
+
         font-size: 1rem;
         margin-top: 10px;
     }
 
+
+    /* =====================================================
+       BUILDER
+       ===================================================== */
+
     .mb-builder {
-        color: #66776e !important;
+        color: #5A6B62 !important;
+        opacity: 1 !important;
+
         font-size: 0.8rem;
         margin-top: 5px;
         margin-bottom: 28px;
     }
 
 
-    /* -----------------------------------------------------
-       7. WELCOME MESSAGE
-       ----------------------------------------------------- */
+    /* =====================================================
+       WELCOME MESSAGE
+       ===================================================== */
 
     .mb-welcome {
         font-family:
@@ -198,38 +220,50 @@ st.markdown(
             135deg,
             #173B2D 0%,
             #2F7655 50%,
-            #5A9E78 100%
+            #438B66 100%
         );
 
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
 
+        opacity: 1 !important;
+
         margin-top: 24px;
         margin-bottom: 12px;
     }
 
 
-    /* -----------------------------------------------------
-       8. FEATURE SECTIONS
-       ----------------------------------------------------- */
+    /* =====================================================
+       FEATURE TITLES
+       ===================================================== */
 
     .mb-feature-title {
         color: #17231D !important;
+        opacity: 1 !important;
+
         font-size: 1.35rem;
         font-weight: 700;
         margin-bottom: 6px;
     }
 
+
+    /* =====================================================
+       FEATURE DESCRIPTION
+       ===================================================== */
+
     .mb-feature-text {
-        color: #4d6258 !important;
+        color: #40564B !important;
+        opacity: 1 !important;
+
+        font-size: 1rem;
         line-height: 1.6;
     }
 
 
-    /* -----------------------------------------------------
-       9. START CONVERSATION BUTTON
-       ----------------------------------------------------- */
+    /* =====================================================
+       START CONVERSATION BUTTON
+       ===================================================== */
 
     div.stButton > button {
         background: linear-gradient(
@@ -239,6 +273,9 @@ st.markdown(
         ) !important;
 
         color: white !important;
+
+        opacity: 1 !important;
+        filter: none !important;
 
         border: none !important;
         border-radius: 14px !important;
@@ -256,10 +293,16 @@ st.markdown(
             box-shadow 0.2s ease;
     }
 
+    div.stButton > button *,
+    div.stButton > button p,
+    div.stButton > button span {
+        color: white !important;
+        opacity: 1 !important;
+    }
+
     div.stButton > button p {
         font-size: 2rem !important;
         font-weight: 700 !important;
-        color: white !important;
         line-height: 1.2 !important;
         margin: 0 !important;
     }
@@ -271,8 +314,6 @@ st.markdown(
             #397A59
         ) !important;
 
-        color: white !important;
-
         transform: translateY(-2px);
 
         box-shadow:
@@ -280,13 +321,19 @@ st.markdown(
     }
 
 
-    /* -----------------------------------------------------
-       10. DISCLAIMER
-       ----------------------------------------------------- */
+    /* =====================================================
+       DISCLAIMER
+       ===================================================== */
+
+    div[data-testid="stExpander"],
+    div[data-testid="stExpander"] * {
+        opacity: 1 !important;
+        filter: none !important;
+    }
 
     div[data-testid="stExpander"] {
-        border-radius: 12px;
-        border-color: #DDE6DF;
+        border-radius: 12px !important;
+        border-color: #D5E2D9 !important;
     }
 
     </style>
@@ -296,7 +343,7 @@ st.markdown(
 
 
 # =========================================================
-# HEADER
+# MINDBLOOM HEADER
 # =========================================================
 
 st.markdown(
@@ -325,7 +372,7 @@ render_disclaimer()
 
 
 # =========================================================
-# WELCOME
+# WELCOME MESSAGE
 # =========================================================
 
 st.markdown(
@@ -343,10 +390,11 @@ st.write(
 
 
 # =========================================================
-# FEATURES
+# THREE FEATURES
 # =========================================================
 
 c1, c2, c3 = st.columns(3)
+
 
 with c1:
     st.markdown(
@@ -393,7 +441,7 @@ with c3:
 
 
 # =========================================================
-# START CONVERSATION
+# START BUTTON
 # =========================================================
 
 st.markdown("<br>", unsafe_allow_html=True)
