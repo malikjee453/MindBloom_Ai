@@ -36,7 +36,63 @@ st.markdown(
     padding-top: 2.5rem;
     padding-bottom: 3rem;
 }
+/* ===== MindBloom text contrast ===== */
 
+html, body, [class*="css"] {
+    color: #26382f !important;
+}
+
+/* Main text */
+.stMarkdown,
+.stMarkdown p,
+.stMarkdown li,
+.stMarkdown span {
+    color: #33483d !important;
+}
+
+/* Captions and secondary text */
+.stCaption,
+[data-testid="stCaptionContainer"] {
+    color: #5f7067 !important;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] * {
+    color: #40564b !important;
+}
+
+/* Sidebar navigation */
+section[data-testid="stSidebar"] a,
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] span {
+    color: #40564b !important;
+}
+
+/* Feature text */
+.mb-feature-text {
+    color: #4d6258 !important;
+}
+
+/* Tagline */
+.mb-tagline {
+    color: #53675d !important;
+}
+
+/* Builder */
+.mb-builder {
+    color: #66776e !important;
+}
+
+/* Welcome heading stays strong */
+.mb-welcome {
+    color: #234b39 !important;
+}
+
+/* Button text stays white */
+div.stButton > button,
+div.stButton > button p {
+    color: white !important;
+}
 /* Main brand */
 
 .mb-brand {
