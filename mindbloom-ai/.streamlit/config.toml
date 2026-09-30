@@ -1,1 +1,8 @@
+[server]
+enableStaticServing = true
 
+[[theme.fontFaces]]
+family = "JameelNooriNastaleeq"
+url = "app/static/JameelNooriNastaleeq.ttf"
+weight = 400
+style = "normal"
