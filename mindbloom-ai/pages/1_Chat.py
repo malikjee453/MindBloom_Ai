@@ -51,7 +51,7 @@ def contains_urdu(text):
 init_session()
 
 render_header(
-    "MindBloom AI",
+    "MindHeal AI",
     "Supportive conversations",
     "Engr. Mubashir Malik",
 )
