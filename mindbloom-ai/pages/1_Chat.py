@@ -5,16 +5,24 @@ from core.session import init_session
 from core.ui import render_header
 
 
-# ---------------------------------------------------------
-# Urdu font styling
-# ---------------------------------------------------------
+# =========================================================
+# URDU FONT STYLING
+# =========================================================
 
 st.markdown(
     """
     <style>
 
+    @font-face {
+        font-family: "JameelNooriNastaleeq";
+        src: url("/app/static/JameelNooriNastaleeq.ttf")
+             format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+
     .urdu-response {
-        font-family: "JameelNooriNastaleeq" !important;
+        font-family: "JameelNooriNastaleeq", serif !important;
         direction: rtl !important;
         text-align: right !important;
         font-size: 24px !important;
@@ -23,13 +31,13 @@ st.markdown(
     }
 
     .urdu-response * {
-        font-family: "JameelNooriNastaleeq" !important;
+        font-family: "JameelNooriNastaleeq", serif !important;
     }
 
     </style>
     """,
     unsafe_allow_html=True,
-)
+))
 
 
 # ---------------------------------------------------------
