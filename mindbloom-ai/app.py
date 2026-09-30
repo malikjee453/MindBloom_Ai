@@ -10,8 +10,8 @@ from core.ui import render_disclaimer
 # =========================================================
 
 st.set_page_config(
-    page_title="MindBloom AI",
-    page_icon="🌱",
+    page_title="MindHeal AI",
+    page_icon=None,
     layout="wide",
 )
 
@@ -258,8 +258,7 @@ st.markdown(
 
 st.markdown(
     '<div class="mb-brand">'
-    '<div class="mb-logo">🌱</div>'
-    '<div class="mb-name">MindBloom'
+    '<div class="mb-name">MindHeal'
     '<span class="mb-ai">AI</span>'
     '</div>'
     '</div>'

@@ -1,4 +1,4 @@
-# MindBloom AI Visitor Gauge
+# MindHeal AI Visitor Gauge
 
 1. Run `supabase_visitors.sql` once in your Supabase SQL Editor.
 2. Add `core/visitor_counter.py` to your project.
