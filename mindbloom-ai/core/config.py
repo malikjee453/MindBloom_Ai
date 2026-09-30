@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-APP_NAME = "MindBloom AI"
+APP_NAME = "MindHeal AI"
 APP_TAGLINE = "A supportive AI companion for emotional growth, habits, and fears."
 BUILDER = "Engr. Mubashir Malik"
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")

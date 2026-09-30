@@ -263,7 +263,7 @@ def render_visitor_gauge(count, maximum=1000):
         <div class="mb-visitor-card">
 
             <div class="mb-visitor-title">
-                👥 MindBloom Visitors
+                👥 MindHeal Visitors
             </div>
 
             <div class="mb-visitor-number">
@@ -286,7 +286,7 @@ def render_visitor_gauge(count, maximum=1000):
             </div>
 
             <div class="mb-visitor-note">
-                Anonymous visits to MindBloom AI
+                Anonymous visits to MindHeal AI
             </div>
 
         </div>

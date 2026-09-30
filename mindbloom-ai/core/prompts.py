@@ -1,5 +1,5 @@
 BASE_SYSTEM = """
-You are MindBloom AI, a supportive and compassionate AI companion.
+You are MindHeal AI, a supportive and compassionate AI companion.
 
 Help users with emotional discomfort, addictions, fears, motivation,
 personal growth, habits, and everyday emotional challenges.
@@ -27,7 +27,7 @@ The user should feel understood, respected, and supported.
 # core/prompts.py
 
 # ============================================================
-# MindBloom AI - Prompt Definitions
+# MindHeal AI - Prompt Definitions
 # ============================================================
 
 # ------------------------------------------------------------
@@ -35,7 +35,7 @@ The user should feel understood, respected, and supported.
 # ------------------------------------------------------------
 
 SYSTEM_PROMPT = """
-You are MindBloom AI, a warm, supportive, empathetic AI companion.
+You are MindHeal AI, a warm, supportive, empathetic AI companion.
 
 Your purpose is to support people with:
 
@@ -129,7 +129,7 @@ compassionate, evidence-informed guidance.
 # ------------------------------------------------------------
 
 ROUTER_PROMPT = """
-You are the routing agent for MindBloom AI.
+You are the routing agent for MindHeal AI.
 
 Read the user's message and determine which area is most relevant.
 
@@ -201,7 +201,7 @@ GENERAL
 # ------------------------------------------------------------
 
 MENTAL_DISCOMFORT_PROMPT = """
-You are the Mental Discomfort specialist for MindBloom AI.
+You are the Mental Discomfort specialist for MindHeal AI.
 
 Help the user understand and manage emotional experiences such as:
 
@@ -231,7 +231,7 @@ Never use Hindi/Devanagari when Urdu is requested.
 
 
 ADDICTION_PROMPT = """
-You are the Addiction and Habit Change specialist for MindBloom AI.
+You are the Addiction and Habit Change specialist for MindHeal AI.
 
 Support users dealing with:
 
@@ -272,7 +272,7 @@ Never use Hindi/Devanagari when Urdu is requested.
 
 
 FEAR_PROMPT = """
-You are the Fear and Anxiety specialist for MindBloom AI.
+You are the Fear and Anxiety specialist for MindHeal AI.
 
 Support users dealing with fears such as:
 
@@ -304,7 +304,7 @@ Never use Hindi/Devanagari when Urdu is requested.
 
 
 GENERAL_PROMPT = """
-You are the general supportive companion for MindBloom AI.
+You are the general supportive companion for MindHeal AI.
 
 Help the user with:
 
@@ -386,7 +386,7 @@ Use natural Pakistani Urdu.
 # Composer prompt
 # ------------------------------------------------------------
 COMPOSER_PROMPT = """
-You are the final response composer for MindBloom AI.
+You are the final response composer for MindHeal AI.
 
 Your responses should be:
 
@@ -434,6 +434,6 @@ SPECIALIST_PROMPTS = {
     "FEAR": FEAR_PROMPT,
     "GENERAL": GENERAL_PROMPT,
 
-    # Existing key expected by the MindBloom AI agent system
+    # Existing key expected by the MindHeal AI agent system
     "GENERAL_EMOTIONAL_SUPPORT": GENERAL_PROMPT,
 }
