@@ -47,9 +47,9 @@ def render_world_clock():
 
                     justify-content: space-between;
 
-                    gap: 8px;
+                    gap: 10px;
 
-                    padding: 9px 10px;
+                    padding: 11px 10px;
 
                     border-top:
                         1px solid #E5ECE7;
@@ -69,7 +69,7 @@ def render_world_clock():
 
                     align-items: baseline;
 
-                    gap: 6px;
+                    gap: 7px;
 
                     min-width: 0;
                 }
@@ -77,7 +77,7 @@ def render_world_clock():
 
                 .clock-city {
 
-                    font-size: 0.82rem;
+                    font-size: 0.95rem;
 
                     font-weight: 600;
 
@@ -87,7 +87,7 @@ def render_world_clock():
 
                 .clock-time {
 
-                    font-size: 0.88rem;
+                    font-size: 1.0rem;
 
                     font-weight: 800;
 
@@ -99,7 +99,9 @@ def render_world_clock():
 
                     color: #B8C5BE;
 
-                    font-size: 0.8rem;
+                    font-size: 0.9rem;
+
+                    font-weight: 600;
                 }
 
 
@@ -109,28 +111,28 @@ def render_world_clock():
 
                     .clock-row {
 
-                        gap: 5px;
+                        gap: 6px;
 
                         padding:
-                            8px 4px;
+                            9px 5px;
                     }
 
                     .clock-city {
 
                         font-size:
-                            0.72rem;
+                            0.82rem;
                     }
 
                     .clock-time {
 
                         font-size:
-                            0.76rem;
+                            0.86rem;
                     }
 
                     .clock-separator {
 
                         font-size:
-                            0.65rem;
+                            0.72rem;
                     }
                 }
 
@@ -151,7 +153,7 @@ def render_world_clock():
                             flex-start;
 
                         row-gap:
-                            7px;
+                            8px;
                     }
 
                     .clock-separator {
