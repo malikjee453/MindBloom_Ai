@@ -433,7 +433,4 @@ def render_visitor_gauge(count, maximum=1000):
         """
     ).strip()
 
-    st.markdown(
-        html,
-        unsafe_allow_html=True,
-    )
+  st.html(html)
