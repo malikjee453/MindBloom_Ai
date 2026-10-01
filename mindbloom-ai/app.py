@@ -3,6 +3,7 @@ import streamlit as st
 from core.config import APP_NAME, APP_TAGLINE, BUILDER
 from core.session import init_session
 from core.ui import render_disclaimer
+from core.visitor_counter import register_visitor, render_visitor_gauge
 
 
 # =========================================================
@@ -52,7 +53,7 @@ st.markdown(
 
 
     /* =====================================================
-       MINDBLOOM BRAND
+       MINDHEAL BRAND
        ===================================================== */
 
     .mb-brand {
@@ -246,6 +247,16 @@ st.markdown(
         border-color: #DDE6DF;
     }
 
+
+    /* =====================================================
+       VISITOR COUNTER POSITION
+       ===================================================== */
+
+    .mb-visitor-card {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
     </style>
     """,
     unsafe_allow_html=True,
@@ -345,6 +356,19 @@ with c3:
         'for short-term memory.'
         '</div>',
         unsafe_allow_html=True,
+    )
+
+
+# =========================================================
+# VISITOR COUNTER
+# =========================================================
+
+visitor_count = register_visitor()
+
+if visitor_count is not None:
+    render_visitor_gauge(
+        visitor_count,
+        maximum=1000,
     )
 
 
