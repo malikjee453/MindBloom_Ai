@@ -363,16 +363,19 @@ with c3:
     )
 
 
+
+
 # =========================================================
 # VISITOR COUNTER
 # =========================================================
+render_world_clock()
 
 visitor_count = register_visitor()
 
 if visitor_count is not None:
     render_visitor_gauge(
         visitor_count,
-        maximum=1000,
+        maximum=100000,
     )
 
 
