@@ -4,6 +4,10 @@ import requests
 import streamlit as st
 
 
+# =========================================================
+# SUPABASE CONFIGURATION
+# =========================================================
+
 def _get_config():
     url = st.secrets.get(
         "SUPABASE_URL",
@@ -17,6 +21,10 @@ def _get_config():
 
     return url, key
 
+
+# =========================================================
+# GET TOTAL VISITOR COUNT
+# =========================================================
 
 def get_visitor_count():
     url, key = _get_config()
@@ -38,7 +46,10 @@ def get_visitor_count():
 
         response.raise_for_status()
 
-        content_range = response.headers.get("Content-Range", "")
+        content_range = response.headers.get(
+            "Content-Range",
+            ""
+        )
 
         if "/" in content_range:
             total = content_range.rsplit("/", 1)[1]
@@ -52,15 +63,36 @@ def get_visitor_count():
         return None
 
 
+# =========================================================
+# REGISTER VISITOR
+# =========================================================
+
 def register_visitor():
-    # Register only once per Streamlit session
+
+    # Already registered during this Streamlit session
     if st.session_state.get("_visitor_registered"):
-        return st.session_state.get("_visitor_count")
+
+        # Return cached count if available
+        cached_count = st.session_state.get(
+            "_visitor_count"
+        )
+
+        if cached_count is not None:
+            return cached_count
+
+        # If count wasn't available earlier, try again
+        count = get_visitor_count()
+
+        st.session_state["_visitor_count"] = count
+
+        return count
+
 
     url, key = _get_config()
 
     if not url or not key:
         return None
+
 
     try:
         visitor_id = str(uuid.uuid4())
@@ -81,8 +113,10 @@ def register_visitor():
 
         response.raise_for_status()
 
+        # Mark this Streamlit session as registered
         st.session_state["_visitor_registered"] = True
 
+        # Get updated total
         count = get_visitor_count()
 
         st.session_state["_visitor_count"] = count
@@ -93,31 +127,64 @@ def register_visitor():
         return None
 
 
+# =========================================================
+# VISITOR GAUGE
+# =========================================================
+
 def render_visitor_gauge(count, maximum=1000):
 
     if count is None:
         return
 
     count = max(0, int(count))
-    maximum = max(100, int(maximum))
 
-    percentage = min(count / maximum, 1)
+    maximum = max(
+        100,
+        int(maximum)
+    )
 
-    angle = -90 + (percentage * 180)
+    percentage = min(
+        count / maximum,
+        1
+    )
+
+    angle = -90 + (
+        percentage * 180
+    )
+
 
     st.markdown(
         f"""
         <style>
 
+        /* =================================================
+           VISITOR CARD
+           ================================================= */
+
         .mb-visitor-card {{
+            width: 100%;
             max-width: 430px;
-            margin: 30px 0 10px 0;
-            padding: 20px;
+
+            margin: 35px auto 20px auto;
+
+            padding: 22px 20px 20px 20px;
+
             border: 1px solid #DCE9E0;
+
             border-radius: 20px;
+
             background: #F7FAF8;
+
             text-align: center;
+
+            box-shadow:
+                0 6px 18px rgba(35, 75, 57, 0.08);
         }}
+
+
+        /* =================================================
+           TITLE
+           ================================================= */
 
         .mb-visitor-title {{
             font-family:
@@ -126,10 +193,19 @@ def render_visitor_gauge(count, maximum=1000):
                 Arial,
                 sans-serif;
 
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+
             font-weight: 800;
+
             color: #234B39;
+
+            margin-bottom: 3px;
         }}
+
+
+        /* =================================================
+           NUMBER
+           ================================================= */
 
         .mb-visitor-number {{
             font-family:
@@ -138,26 +214,48 @@ def render_visitor_gauge(count, maximum=1000):
                 Arial,
                 sans-serif;
 
-            font-size: 2.2rem;
+            font-size: 2.4rem;
+
             font-weight: 900;
+
             color: #2F7655;
+
+            line-height: 1.1;
+
             margin-top: 5px;
         }}
 
+
+        /* =================================================
+           GAUGE
+           ================================================= */
+
         .mb-gauge {{
             position: relative;
+
             width: 280px;
+
             height: 150px;
-            margin: 10px auto 0;
+
+            margin: 12px auto 0;
+
             overflow: hidden;
         }}
 
+
+        /* =================================================
+           GAUGE ARC
+           ================================================= */
+
         .mb-gauge-arc {{
             position: absolute;
+
             left: 10px;
+
             top: 10px;
 
             width: 260px;
+
             height: 260px;
 
             border-radius: 50%;
@@ -172,15 +270,22 @@ def render_visitor_gauge(count, maximum=1000):
                 );
         }}
 
+
+        /* =================================================
+           INNER GAUGE
+           ================================================= */
+
         .mb-gauge-arc::after {{
             content: "";
 
             position: absolute;
 
             left: 18px;
+
             top: 18px;
 
             width: 224px;
+
             height: 224px;
 
             border-radius: 50%;
@@ -188,13 +293,20 @@ def render_visitor_gauge(count, maximum=1000):
             background: #F7FAF8;
         }}
 
+
+        /* =================================================
+           NEEDLE
+           ================================================= */
+
         .mb-gauge-needle {{
             position: absolute;
 
             left: 50%;
+
             bottom: 5px;
 
             width: 4px;
+
             height: 110px;
 
             border-radius: 4px;
@@ -210,16 +322,24 @@ def render_visitor_gauge(count, maximum=1000):
             z-index: 2;
         }}
 
+
+        /* =================================================
+           CENTER DOT
+           ================================================= */
+
         .mb-gauge-dot {{
             position: absolute;
 
             left: 50%;
+
             bottom: 0;
 
             width: 15px;
+
             height: 15px;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
             border-radius: 50%;
 
@@ -228,8 +348,14 @@ def render_visitor_gauge(count, maximum=1000):
             z-index: 3;
         }}
 
+
+        /* =================================================
+           SCALE
+           ================================================= */
+
         .mb-gauge-scale {{
             display: flex;
+
             justify-content: space-between;
 
             margin: 0 25px;
@@ -242,8 +368,14 @@ def render_visitor_gauge(count, maximum=1000):
                 sans-serif;
 
             font-size: 0.75rem;
+
             font-weight: 700;
         }}
+
+
+        /* =================================================
+           NOTE
+           ================================================= */
 
         .mb-visitor-note {{
             margin-top: 8px;
@@ -259,6 +391,7 @@ def render_visitor_gauge(count, maximum=1000):
         }}
 
         </style>
+
 
         <div class="mb-visitor-card">
 
@@ -281,8 +414,11 @@ def render_visitor_gauge(count, maximum=1000):
             </div>
 
             <div class="mb-gauge-scale">
+
                 <span>0</span>
+
                 <span>{maximum:,}</span>
+
             </div>
 
             <div class="mb-visitor-note">
