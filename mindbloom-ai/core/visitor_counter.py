@@ -128,7 +128,7 @@ def register_visitor():
 # SIMPLE VISITOR COUNTER
 # =========================================================
 
-def render_visitor_gauge(count, maximum=1000):
+def render_visitor_gauge(count, maximum=100000):
 
     if count is None:
         return
@@ -139,62 +139,50 @@ def render_visitor_gauge(count, maximum=1000):
         f"""
         <style>
 
-        .mb-simple-visitors {{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-
-            margin: 28px auto 18px auto;
-
-            color: #66756D;
+        .mb-visitor-simple {{
+            margin: 22px 0 18px 0;
 
             font-family:
                 "Segoe UI",
                 Arial,
                 sans-serif;
 
-            font-size: 0.88rem;
+            font-size: 0.95rem;
+
+            color: #66756D;
+
+            text-align: left;
         }}
 
-        .mb-simple-visitors-icon {{
+        .mb-visitor-simple-icon {{
             font-size: 1rem;
+            margin-right: 5px;
         }}
 
-        .mb-simple-visitors-label {{
+        .mb-visitor-simple-text {{
             font-weight: 600;
             color: #53675D;
         }}
 
-        .mb-simple-visitors-number {{
+        .mb-visitor-simple-number {{
             font-weight: 800;
             color: #2F7655;
         }}
 
-        .mb-simple-visitors-note {{
-            color: #89958F;
-            font-size: 0.72rem;
-            margin-left: 3px;
-        }}
-
         </style>
 
-        <div class="mb-simple-visitors">
+        <div class="mb-visitor-simple">
 
-            <span class="mb-simple-visitors-icon">
-                👥
+            <span class="mb-visitor-simple-icon">
+                👤
             </span>
 
-            <span class="mb-simple-visitors-label">
-                MindHeal Visitors:
+            <span class="mb-visitor-simple-text">
+                You are Visitor No:
             </span>
 
-            <span class="mb-simple-visitors-number">
+            <span class="mb-visitor-simple-number">
                 {count:,}
-            </span>
-
-            <span class="mb-simple-visitors-note">
-                anonymous visits
             </span>
 
         </div>
