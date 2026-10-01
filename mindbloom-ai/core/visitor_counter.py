@@ -1,5 +1,6 @@
 import os
 import uuid
+import textwrap
 import requests
 import streamlit as st
 
@@ -87,12 +88,10 @@ def register_visitor():
 
         return count
 
-
     url, key = _get_config()
 
     if not url or not key:
         return None
-
 
     try:
         visitor_id = str(uuid.uuid4())
@@ -152,8 +151,14 @@ def render_visitor_gauge(count, maximum=1000):
         percentage * 180
     )
 
+    # -----------------------------------------------------
+    # IMPORTANT:
+    # Remove indentation from HTML before sending it
+    # to Streamlit. Otherwise Streamlit may display it
+    # as a code block.
+    # -----------------------------------------------------
 
-    st.markdown(
+    html = textwrap.dedent(
         f"""
         <style>
 
@@ -392,7 +397,6 @@ def render_visitor_gauge(count, maximum=1000):
 
         </style>
 
-
         <div class="mb-visitor-card">
 
             <div class="mb-visitor-title">
@@ -426,6 +430,10 @@ def render_visitor_gauge(count, maximum=1000):
             </div>
 
         </div>
-        """,
+        """
+    ).strip()
+
+    st.markdown(
+        html,
         unsafe_allow_html=True,
     )
