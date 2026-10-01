@@ -70,10 +70,8 @@ def get_visitor_count():
 
 def register_visitor():
 
-    # Already registered during this Streamlit session
     if st.session_state.get("_visitor_registered"):
 
-        # Return cached count if available
         cached_count = st.session_state.get(
             "_visitor_count"
         )
@@ -81,7 +79,6 @@ def register_visitor():
         if cached_count is not None:
             return cached_count
 
-        # If count wasn't available earlier, try again
         count = get_visitor_count()
 
         st.session_state["_visitor_count"] = count
@@ -112,10 +109,8 @@ def register_visitor():
 
         response.raise_for_status()
 
-        # Mark this Streamlit session as registered
         st.session_state["_visitor_registered"] = True
 
-        # Get updated total
         count = get_visitor_count()
 
         st.session_state["_visitor_count"] = count
@@ -151,45 +146,25 @@ def render_visitor_gauge(count, maximum=1000):
         percentage * 180
     )
 
-    # -----------------------------------------------------
-    # IMPORTANT:
-    # Remove indentation from HTML before sending it
-    # to Streamlit. Otherwise Streamlit may display it
-    # as a code block.
-    # -----------------------------------------------------
-
     html = textwrap.dedent(
         f"""
         <style>
 
-        /* =================================================
-           VISITOR CARD
-           ================================================= */
-
         .mb-visitor-card {{
             width: 100%;
             max-width: 430px;
-
             margin: 35px auto 20px auto;
-
             padding: 22px 20px 20px 20px;
 
             border: 1px solid #DCE9E0;
-
             border-radius: 20px;
 
             background: #F7FAF8;
-
             text-align: center;
 
             box-shadow:
                 0 6px 18px rgba(35, 75, 57, 0.08);
         }}
-
-
-        /* =================================================
-           TITLE
-           ================================================= */
 
         .mb-visitor-title {{
             font-family:
@@ -199,18 +174,11 @@ def render_visitor_gauge(count, maximum=1000):
                 sans-serif;
 
             font-size: 1.15rem;
-
             font-weight: 800;
-
             color: #234B39;
 
             margin-bottom: 3px;
         }}
-
-
-        /* =================================================
-           NUMBER
-           ================================================= */
 
         .mb-visitor-number {{
             font-family:
@@ -220,26 +188,17 @@ def render_visitor_gauge(count, maximum=1000):
                 sans-serif;
 
             font-size: 2.4rem;
-
             font-weight: 900;
-
             color: #2F7655;
 
             line-height: 1.1;
-
             margin-top: 5px;
         }}
-
-
-        /* =================================================
-           GAUGE
-           ================================================= */
 
         .mb-gauge {{
             position: relative;
 
             width: 280px;
-
             height: 150px;
 
             margin: 12px auto 0;
@@ -247,20 +206,13 @@ def render_visitor_gauge(count, maximum=1000):
             overflow: hidden;
         }}
 
-
-        /* =================================================
-           GAUGE ARC
-           ================================================= */
-
         .mb-gauge-arc {{
             position: absolute;
 
             left: 10px;
-
             top: 10px;
 
             width: 260px;
-
             height: 260px;
 
             border-radius: 50%;
@@ -275,22 +227,15 @@ def render_visitor_gauge(count, maximum=1000):
                 );
         }}
 
-
-        /* =================================================
-           INNER GAUGE
-           ================================================= */
-
         .mb-gauge-arc::after {{
             content: "";
 
             position: absolute;
 
             left: 18px;
-
             top: 18px;
 
             width: 224px;
-
             height: 224px;
 
             border-radius: 50%;
@@ -298,20 +243,13 @@ def render_visitor_gauge(count, maximum=1000):
             background: #F7FAF8;
         }}
 
-
-        /* =================================================
-           NEEDLE
-           ================================================= */
-
         .mb-gauge-needle {{
             position: absolute;
 
             left: 50%;
-
             bottom: 5px;
 
             width: 4px;
-
             height: 110px;
 
             border-radius: 4px;
@@ -327,24 +265,16 @@ def render_visitor_gauge(count, maximum=1000):
             z-index: 2;
         }}
 
-
-        /* =================================================
-           CENTER DOT
-           ================================================= */
-
         .mb-gauge-dot {{
             position: absolute;
 
             left: 50%;
-
             bottom: 0;
 
             width: 15px;
-
             height: 15px;
 
-            transform:
-                translateX(-50%);
+            transform: translateX(-50%);
 
             border-radius: 50%;
 
@@ -352,11 +282,6 @@ def render_visitor_gauge(count, maximum=1000):
 
             z-index: 3;
         }}
-
-
-        /* =================================================
-           SCALE
-           ================================================= */
 
         .mb-gauge-scale {{
             display: flex;
@@ -373,14 +298,8 @@ def render_visitor_gauge(count, maximum=1000):
                 sans-serif;
 
             font-size: 0.75rem;
-
             font-weight: 700;
         }}
-
-
-        /* =================================================
-           NOTE
-           ================================================= */
 
         .mb-visitor-note {{
             margin-top: 8px;
@@ -433,4 +352,4 @@ def render_visitor_gauge(count, maximum=1000):
         """
     ).strip()
 
-  st.html(html)
+    st.html(html)
