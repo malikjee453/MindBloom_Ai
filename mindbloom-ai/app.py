@@ -3,7 +3,11 @@ import streamlit as st
 from core.config import APP_NAME, APP_TAGLINE, BUILDER
 from core.session import init_session
 from core.ui import render_disclaimer
-from core.visitor_counter import register_visitor, render_visitor_gauge
+from core.visitor_counter import (
+    register_visitor,
+    render_visitor_gauge,
+)
+from core.world_clock import render_world_clock
 
 
 # =========================================================
